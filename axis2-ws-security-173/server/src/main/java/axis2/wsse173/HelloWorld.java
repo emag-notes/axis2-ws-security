@@ -7,9 +7,9 @@ import javax.jws.WebService;
 @WebService(serviceName = "HelloWorld")
 public class HelloWorld {
 
-    @WebMethod
-    public String sayHello(@WebParam(name = "text") String text) {
-        return "Hello, " + text;
-    }
+  @WebMethod
+  public String sayHello(@WebParam(name = "text") String text) {
+    return "Hello, " + text;
+  }
 
 }
