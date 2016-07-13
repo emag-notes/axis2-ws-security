@@ -10,10 +10,17 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>axis2-jaxws-soap12-demo-server</artifactId>
+  <artifactId>axis2-ws-security-164-server</artifactId>
   <packaging>war</packaging>
 
   <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.apache.axis2</groupId>
       <artifactId>axis2-jaxws</artifactId>
@@ -30,39 +37,24 @@
       <groupId>org.apache.axis2</groupId>
       <artifactId>axis2-adb</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.rampart</groupId>
+      <artifactId>rampart-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.rampart</groupId>
+      <artifactId>rampart</artifactId>
+      <type>mar</type>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.jvnet.jax-ws-commons</groupId>
-        <artifactId>jaxws-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>soap11</id>
-            <configuration>
-              <executable>${tool.wsgen}</executable>
-              <sei>axis2.jaxws.soap12.server.HelloWorldSoap11</sei>
-              <genWsdl>true</genWsdl>
-            </configuration>
-            <goals>
-              <goal>wsgen</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>soap12</id>
-            <configuration>
-              <executable>${tool.wsgen}</executable>
-              <sei>axis2.jaxws.soap12.server.HelloWorldSoap12</sei>
-              <genWsdl>true</genWsdl>
-              <extension>true</extension>
-              <protocol>Xsoap1.2</protocol>
-            </configuration>
-            <goals>
-              <goal>wsgen</goal>
-            </goals>
-          </execution>
-        </executions>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2-mar-maven-plugin</artifactId>
+        <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>
