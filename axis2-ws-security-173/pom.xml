@@ -15,7 +15,11 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <version.axis2>1.7.3</version.axis2>
+    <version.rampart>1.7.0</version.rampart>
+
     <version.junit>4.12</version.junit>
+    <version.cxf>3.1.6</version.cxf>
+
     <version.jaxws-maven-plugin>2.3.1-b20150201.1248</version.jaxws-maven-plugin>
   </properties>
 
@@ -43,9 +47,39 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.rampart</groupId>
+        <artifactId>rampart-core</artifactId>
+        <version>${version.rampart}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.rampart</groupId>
+        <artifactId>rampart</artifactId>
+        <version>${version.rampart}</version>
+        <type>mar</type>
+      </dependency>
+
+      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>${version.junit}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        <version>${version.cxf}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-transports-http</artifactId>
+        <version>${version.cxf}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-rt-ws-security</artifactId>
+        <version>${version.cxf}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
@@ -57,40 +91,14 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.jvnet.jax-ws-commons</groupId>
-          <artifactId>jaxws-maven-plugin</artifactId>
-          <version>${version.jaxws-maven-plugin}</version>
+          <groupId>org.apache.axis2</groupId>
+          <artifactId>axis2-mar-maven-plugin</artifactId>
+          <version>${version.axis2}</version>
+          <extensions>true</extensions>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
-
-  <profiles>
-    <profile>
-      <id>win</id>
-      <activation>
-        <os>
-          <family>windows</family>
-        </os>
-      </activation>
-      <properties>
-        <tool.wsgen>${java.home}/../bin/wsgen.exe</tool.wsgen>
-        <tool.wsimport>${java.home}/../bin/wsimport.exe</tool.wsimport>
-      </properties>
-    </profile>
-    <profile>
-      <id>nix</id>
-      <activation>
-        <os>
-          <family>!windows</family>
-        </os>
-      </activation>
-      <properties>
-        <tool.wsgen>${java.home}/../bin/wsgen</tool.wsgen>
-        <tool.wsimport>${java.home}/../bin/wsimport</tool.wsimport>
-      </properties>
-    </profile>
-  </profiles>
 
   <modules>
     <module>server</module>
