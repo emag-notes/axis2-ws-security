@@ -6,7 +6,7 @@
 
   <parent>
     <groupId>axis2</groupId>
-    <artifactId>axis2-ws-security-163</artifactId>
+    <artifactId>axis2-ws-security-164</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
