@@ -25,9 +25,7 @@ $ cp server/target/axis2-ws-security-164-server.war <YOUR_CATALINA_HOME>/webapps
 
 And run tomcat with 8080 port.
 
-### Access to service
-
-#### SOAP 1.1
+### Access to the service
 
 ``` sh
 $ ./mvnw clean test -pl client

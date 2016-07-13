@@ -26,15 +26,13 @@ $ cp server/target/axis2-ws-security-164-server.war <YOUR_CATALINA_HOME>/webapps
 
 And run tomcat with 8080 port.
 
-### Access to service
-
-#### SOAP 1.1
+### Access to the service
 
 ``` sh
 $ ./mvnw clean test -pl client
 ```
 
-And you should see the error in catalina.out.
+And you should see the following error in catalina.out.
 
 ``` sh
 13-Jul-2016 22:04:40.500 SEVERE [http-nio-8080-exec-8] org.apache.axis2.engine.AxisEngine.receive Must Understand check failed for headers: {http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security
